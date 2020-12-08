@@ -10,7 +10,7 @@ from kdkit.models.registry import register_class, register_func
 
 @register_class
 class Bottleneck4ResNet152(BottleneckBase):
-    def __init__(self, bottleneck_channel=12, bottleneck_idx=7, compressor=None, decompressor=None, bottleneck_ver='2'):
+    def __init__(self, bottleneck_channel=12, bottleneck_idx=7, bottleneck_ver='2', compressor=None, decompressor=None):
         if bottleneck_ver == '1':
             modules = [
                 nn.Conv2d(3, bottleneck_channel, kernel_size=7, stride=2, padding=3, bias=False),
@@ -101,7 +101,7 @@ class CustomResNet(nn.Sequential):
 
 
 @register_func
-def custom_resnet152(bottleneck_channel=12, bottleneck_idx=7, compressor=None, decompressor=None,
+def custom_resnet152(bottleneck_channel=12, bottleneck_idx=7, bottleneck_ver='2', compressor=None, decompressor=None,
                      short_module_names=None, **kwargs):
     if short_module_names is None:
         short_module_names = ['layer3', 'layer4', 'avgpool', 'fc']
@@ -112,6 +112,6 @@ def custom_resnet152(bottleneck_channel=12, bottleneck_idx=7, compressor=None, d
     if decompressor is not None:
         decompressor = get_bottleneck_processor(decompressor['name'], **decompressor['params'])
 
-    bottleneck = Bottleneck4ResNet152(bottleneck_channel, bottleneck_idx, compressor, decompressor)
+    bottleneck = Bottleneck4ResNet152(bottleneck_channel, bottleneck_idx, bottleneck_ver, compressor, decompressor)
     org_model = resnet152(**kwargs)
     return CustomResNet(bottleneck, short_module_names, org_model)
