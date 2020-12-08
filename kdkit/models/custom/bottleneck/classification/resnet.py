@@ -10,29 +10,76 @@ from kdkit.models.registry import register_class, register_func
 
 @register_class
 class Bottleneck4ResNet152(BottleneckBase):
-    def __init__(self, bottleneck_channel=12, bottleneck_idx=7, compressor=None, decompressor=None):
-        modules = [
-            nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False),
-            nn.BatchNorm2d(64),
-            nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
-            nn.BatchNorm2d(64),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(64, bottleneck_channel, kernel_size=2, stride=2, padding=1, bias=False),
-            nn.BatchNorm2d(bottleneck_channel),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(bottleneck_channel, 512, kernel_size=2, stride=1, padding=1, bias=False),
-            nn.BatchNorm2d(512),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(512, 512, kernel_size=2, stride=1, padding=1, bias=False),
-            nn.BatchNorm2d(512),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(512, 512, kernel_size=2, stride=1, bias=False),
-            nn.BatchNorm2d(512),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(512, 512, kernel_size=2, stride=1, bias=False),
-            nn.AvgPool2d(kernel_size=2, stride=1)
-        ]
+    def __init__(self, bottleneck_channel=12, bottleneck_idx=7, bottleneck_ver='2', compressor=None, decompressor=None):
+        if bottleneck_ver == '1':
+            modules = [
+                nn.Conv2d(3, bottleneck_channel, kernel_size=7, stride=2, padding=3, bias=False),
+                nn.BatchNorm2d(bottleneck_channel),
+                nn.ReLU(inplace=True),
+                nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
+                nn.BatchNorm2d(bottleneck_channel),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(bottleneck_channel, 64, kernel_size=2, stride=2, padding=1, bias=False),
+                nn.BatchNorm2d(64),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(64, 512, kernel_size=2, stride=1, padding=1, bias=False),
+                nn.BatchNorm2d(512),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(512, 512, kernel_size=2, stride=1, padding=1, bias=False),
+                nn.BatchNorm2d(512),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(512, 512, kernel_size=2, stride=1, bias=False),
+                nn.BatchNorm2d(512),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(512, 512, kernel_size=2, stride=1, bias=False),
+                nn.AvgPool2d(kernel_size=2, stride=1)
+            ]
+        elif bottleneck_ver == '2':
+            modules = [
+                nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False),
+                nn.BatchNorm2d(64),
+                nn.ReLU(inplace=True),
+                nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
+                nn.BatchNorm2d(64),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(64, bottleneck_channel, kernel_size=2, stride=2, padding=1, bias=False),
+                nn.BatchNorm2d(bottleneck_channel),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(bottleneck_channel, 512, kernel_size=2, stride=1, padding=1, bias=False),
+                nn.BatchNorm2d(512),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(512, 512, kernel_size=2, stride=1, padding=1, bias=False),
+                nn.BatchNorm2d(512),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(512, 512, kernel_size=2, stride=1, bias=False),
+                nn.BatchNorm2d(512),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(512, 512, kernel_size=2, stride=1, bias=False),
+                nn.AvgPool2d(kernel_size=2, stride=1)
+            ]
+        else:
+            modules = [
+                nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False),
+                nn.BatchNorm2d(64),
+                nn.ReLU(inplace=True),
+                nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
+                nn.BatchNorm2d(64),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(64, 512, kernel_size=2, stride=2, padding=1, bias=False),
+                nn.BatchNorm2d(512),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(512, bottleneck_channel, kernel_size=2, stride=1, padding=1, bias=False),
+                nn.BatchNorm2d(bottleneck_channel),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(bottleneck_channel, 512, kernel_size=2, stride=1, padding=1, bias=False),
+                nn.BatchNorm2d(512),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(512, 512, kernel_size=2, stride=1, bias=False),
+                nn.BatchNorm2d(512),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(512, 512, kernel_size=2, stride=1, bias=False),
+                nn.AvgPool2d(kernel_size=2, stride=1)
+            ]
         encoder = nn.Sequential(*modules[:bottleneck_idx])
         decoder = nn.Sequential(*modules[bottleneck_idx:])
         super().__init__(encoder=encoder, decoder=decoder, compressor=compressor, decompressor=decompressor)
