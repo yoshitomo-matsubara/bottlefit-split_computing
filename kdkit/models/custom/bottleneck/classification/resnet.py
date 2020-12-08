@@ -10,7 +10,7 @@ from kdkit.models.registry import register_class, register_func
 
 @register_class
 class Bottleneck4ResNet152(BottleneckBase):
-    def __init__(self, bottleneck_channel=12, bottleneck_idx=7, bottleneck_ver='2', compressor=None, decompressor=None):
+    def __init__(self, bottleneck_channel=12, bottleneck_idx=7, compressor=None, decompressor=None, bottleneck_ver='2'):
         if bottleneck_ver == '1':
             modules = [
                 nn.Conv2d(3, bottleneck_channel, kernel_size=7, stride=2, padding=3, bias=False),
