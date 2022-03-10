@@ -65,8 +65,18 @@ pipenv run python dataset_converter.py --input ~/dataset/ilsvrc2012/ --dataset i
 ```
 
 ## Trained models
+
 ### Baseline methods
 Our baseline results (Vanilla, KD, HND, and Autoencoder) and trained model weights are available at https://github.com/yoshitomo-matsubara/head-network-distillation
+
+### Proposed methods
+Create a directory and download the checkpoints of model weights at https://drive.google.com/file/d/1uFK-z_vincaujhm_LnKo_rno6G3B_FkU/view?usp=sharing
+
+```shell
+mkdir -p resource/ckpt
+```
+
+Unzip the downloaded zip files under `./resource/ckpt/`, then there will be `./resource/ckpt/image_classification/`.
 
 ## Test trained models
 
