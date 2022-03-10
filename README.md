@@ -71,6 +71,34 @@ mkdir -p resource/ckpt
 Unzip the downloaded zip files under `./resource/ckpt/`, then there will be `./resource/ckpt/image_classification/`.
 
 ## Test trained models
+Taking 3ch-bottleneck-injected models as examples
+### GHND-KD
+```shell
+pipenv run python image_classification.py --config config/ghnd_kd/custom_densenet169_from_densenet169-3ch -test_only
+pipenv run python image_classification.py --config config/ghnd_kd/custom_densenet201_from_densenet201-3ch.yaml -test_only
+pipenv run python image_classification.py --config config/ghnd_kd/custom_resnet152_from_resnet152-3ch.yaml -test_only
+```
+
+### GHND-KD (FE)
+```shell
+pipenv run python image_classification.py --config config/ghnd_kd-finetune/custom_densenet169_from_densenet169-3ch -test_only
+pipenv run python image_classification.py --config config/ghnd_kd-finetune/custom_densenet201_from_densenet201-3ch.yaml -test_only
+pipenv run python image_classification.py --config config/ghnd_kd-finetune/custom_resnet152_from_resnet152-3ch.yaml -test_only
+```
+
+### GHND-FT
+```shell
+pipenv run python image_classification.py --config config/ghnd_vanilla/custom_densenet169_from_densenet169-3ch.yaml -test_only
+pipenv run python image_classification.py --config config/ghnd_vanilla/custom_densenet201_from_densenet201-3ch.yaml -test_only
+pipenv run python image_classification.py --config config/ghnd_vanilla/custom_resnet152_from_resnet152-3ch.yaml -test_only
+```
+
+### GHND-FT (FE)
+```shell
+pipenv run python image_classification.py --config config/ghnd_vanilla-finetune/custom_densenet169_from_densenet169-3ch.yaml -test_only
+pipenv run python image_classification.py --config config/ghnd_vanilla-finetune/custom_densenet201_from_densenet201-3ch.yaml -test_only
+pipenv run python image_classification.py --config config/ghnd_vanilla-finetune/custom_resnet152_from_resnet152-3ch.yaml -test_only
+```
 
 ## Train models
 If you would like to train models, you should exclude `-test_only` from the above commands, and set new file paths for student model in the yaml files.  
