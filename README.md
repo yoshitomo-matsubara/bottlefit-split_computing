@@ -17,15 +17,12 @@ The official implementations of BottleFit for ILSVRC 2012 (ImageNet) dataset:
 ## Requirements
 - Python >=3.6
 - pipenv
-- [myutils](https://github.com/yoshitomo-matsubara/myutils)
 
 
 ## How to clone
 ```
 git clone https://github.com/yoshitomo-matsubara/bottlefit-split_computing.git
 cd bottlefit-split_computing/
-git submodule init
-git submodule update --recursive --remote
 pipenv install
 ```
 
