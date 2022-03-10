@@ -1,11 +1,9 @@
-from collections import OrderedDict
-
 from torch import nn
-from torchvision.models import resnet152
-
 from torchdistill.models.custom.bottleneck.base import BottleneckBase
+from torchdistill.models.custom.bottleneck.classification.resnet import CustomResNet
 from torchdistill.models.custom.bottleneck.processor import get_bottleneck_processor
 from torchdistill.models.registry import register_model_class, register_model_func
+from torchvision.models import resnet152
 
 
 @register_model_class
@@ -86,21 +84,6 @@ class Bottleneck4ResNet152(BottleneckBase):
         encoder = nn.Sequential(*modules[:bottleneck_idx])
         decoder = nn.Sequential(*modules[bottleneck_idx:])
         super().__init__(encoder=encoder, decoder=decoder, compressor=compressor, decompressor=decompressor)
-
-
-@register_model_class
-class CustomResNet(nn.Sequential):
-    def __init__(self, bottleneck, short_module_names, org_resnet):
-        module_dict = OrderedDict()
-        module_dict['bottleneck'] = bottleneck
-        short_module_set = set(short_module_names)
-        for child_name, child_module in org_resnet.named_children():
-            if child_name in short_module_set:
-                if child_name == 'fc':
-                    module_dict['flatten'] = nn.Flatten(1)
-                module_dict[child_name] = child_module
-
-        super().__init__(module_dict)
 
 
 @register_model_func
