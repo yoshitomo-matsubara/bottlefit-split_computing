@@ -59,11 +59,6 @@ tar -xvf ILSVRC2012_img_val.tar
 sh valprep.sh
 ```
 
-```
-# Go to the root of the repository
-pipenv run python dataset_converter.py --input ~/dataset/ilsvrc2012/ --dataset imagenet --output ./resource/data/ILSVRC2012/
-```
-
 ## Trained models
 
 ### Baseline methods
