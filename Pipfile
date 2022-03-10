@@ -6,8 +6,9 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-torch = "==1.5.1"
-torchvision = "==0.6.1"
+torchdistill = ">=0.3.2"
+torch = ""
+torchvision = ""
 numpy = "*"
 pyyaml = "*"
 scipy = "*"
