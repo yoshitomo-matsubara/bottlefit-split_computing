@@ -14,6 +14,7 @@ The official implementations of BottleFit for ILSVRC 2012 (ImageNet) dataset:
   booktitle={2022 IEEE 23rd International Symposium on a World of Wireless, Mobile and Multimedia Networks (WoWMoM)}, 
   pages={337-346},
   year={2022}
+}
 ```
 
 ## Requirements
