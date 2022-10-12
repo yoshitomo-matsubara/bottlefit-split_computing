@@ -2,18 +2,18 @@
 
 The official implementations of BottleFit for ILSVRC 2012 (ImageNet) dataset:
 "BottleFit: Learning Compressed Representations in Deep Neural Networks for Effective and Efficient Split Computing," [IEEE WoWMoM '22](https://computing.ulster.ac.uk/WoWMoM2022/index.html)  
-[[Preprint](https://arxiv.org/abs/2201.02693)]  
+[[Paper](https://ieeexplore.ieee.org/document/9842809)] [[Preprint](https://arxiv.org/abs/2201.02693)]  
 
 **More advanced work *"SC2: Supervised Compression for Split Computing"* and code** are available at https://github.com/yoshitomo-matsubara/sc2-benchmark
   
 ## Citations
 ```bibtex
-@article{matsubara2022bottlefit,
-  title={BottleFit: Learning Compressed Representations in Deep Neural Networks for Effective and Efficient Split Computing},
+@inproceedings{matsubara2022bottlefit,
+  title={{BottleFit: Learning Compressed Representations in Deep Neural Networks for Effective and Efficient Split Computing}},
   author={Matsubara, Yoshitomo and Callegaro, Davide and Singh, Sameer and Levorato, Marco and Restuccia, Francesco},
-  journal={arXiv preprint arXiv:2201.02693},
+  booktitle={2022 IEEE 23rd International Symposium on a World of Wireless, Mobile and Multimedia Networks (WoWMoM)}, 
+  pages={337-346},
   year={2022}
-}
 ```
 
 ## Requirements
