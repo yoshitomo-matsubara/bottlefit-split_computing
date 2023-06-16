@@ -4,7 +4,7 @@ The official implementations of BottleFit for ILSVRC 2012 (ImageNet) dataset:
 "BottleFit: Learning Compressed Representations in Deep Neural Networks for Effective and Efficient Split Computing," [IEEE WoWMoM '22](https://computing.ulster.ac.uk/WoWMoM2022/index.html)  
 [[Paper](https://ieeexplore.ieee.org/document/9842809)] [[Preprint](https://arxiv.org/abs/2201.02693)]  
 
-**More advanced work *"SC2: Supervised Compression for Split Computing"* and code** are available at https://github.com/yoshitomo-matsubara/sc2-benchmark
+**More advanced work *"SC2 Benchmark: Supervised Compression for Split Computing"* and code** are available at https://github.com/yoshitomo-matsubara/sc2-benchmark
   
 ## Citations
 ```bibtex
@@ -65,7 +65,7 @@ sh valprep.sh
 Our baseline results (Vanilla, KD, HND, and Autoencoder) and trained model weights are available at https://github.com/yoshitomo-matsubara/head-network-distillation
 
 ### Proposed methods
-Create a directory and download the checkpoints of model weights at https://drive.google.com/file/d/1uFK-z_vincaujhm_LnKo_rno6G3B_FkU/view?usp=sharing
+Create a directory and download the checkpoints of model weights ([densenet.zip](https://github.com/yoshitomo-matsubara/bottlefit-split_computing/releases/download/google_drive-to-github/densenet.zip), [resnet.zip](https://github.com/yoshitomo-matsubara/bottlefit-split_computing/releases/download/google_drive-to-github/resnet.zip), [resnet-other_vers.zip](https://github.com/yoshitomo-matsubara/bottlefit-split_computing/releases/download/google_drive-to-github/resnet-other_vers.zip), [resnet-other_methods.zip](https://github.com/yoshitomo-matsubara/bottlefit-split_computing/releases/download/google_drive-to-github/resnet-other_methods.zip))
 
 ```shell
 mkdir -p resource/ckpt
